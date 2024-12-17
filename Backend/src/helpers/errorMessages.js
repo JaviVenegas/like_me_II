@@ -1,13 +1,15 @@
 module.exports = {
-    POST_NO_ELIMINADO: {
-        id: 'postNoEliminado',
-        satusCode: 404,
-        description: 'El post a eliminar con el ID asignado no se encuentra gesitrado en la base de datos',
+    'Post_Eliminado_No_Encontrado': {
+        id: 'postNoEncontrado',
+        statusCode: 404,
+        message: 'post no encontrado',
+        description: 'El post a eliminar con el ID asignado no se encuentra registrado en la base de datos',
     },
-    SERVER_ERROR: {
+    'Error_de_servidor': {
         id: 'serverError',
-        satusCode: 500,
+        statusCode: 500,
         message: 'Error interno en el servidor',
-    },
+        description: 'error inesperado en el servidor',
+    }
 
 }

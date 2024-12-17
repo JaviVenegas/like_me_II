@@ -48,7 +48,13 @@ const handleModificarPost = async (req, res, next) => {
 const handleEliminarPost = async (req, res, next) => {
     try{
         const {id} = req.params //otra forma de escribir const id = req.param.idpost    
-    
+        
+        const exists = await Posts.existePost(id)
+        if(!exists){
+            throw new Error('Post_Eliminado_No_Encontrado', { cause: 'Error en la base de datos'})
+        }
+
+
         const response = await Posts.eliminarPost (id);
         res.status(200).json({
             msg: 'post eliminado',

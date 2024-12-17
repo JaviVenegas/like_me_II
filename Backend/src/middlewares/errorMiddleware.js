@@ -1,12 +1,20 @@
+const errors = require ('../helpers/errorMessages');
+
+
 const errorMiddleware = (err, req, res, next) => {
-    console.error(err,'error desde el middlewar')
+
+    const errorDetails = errors[err.message] || errors['Error_de_servidor'];
 
     const response = {
-        id: '',
-        message: '',
-        description: '',
+
+        id: errorDetails.id,
+        message: errorDetails.message,
+        description: errorDetails.description
+
     }
-    res.status().json(respnse)
+
+    res.status(errorDetails.statusCode).json(response);
+
 }
 
-module.exports = errorMiddleware 
+module.exports = errorMiddleware

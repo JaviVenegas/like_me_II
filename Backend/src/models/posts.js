@@ -55,6 +55,21 @@ const eliminarPost = async (id) => {
     }
 }
 
+//funcion para verificar existencia 
+
+const existePost = async (id) => {
+    try{
+        const SQLQuery = "SELECT * FROM posts WHERE id =$1";
+        const SQLValues = [id]
+        const {rowCount} = await DB.query (SQLQuery, SQLValues)
+        return rowCount ? true : false 
+        
+    } catch (error){
+        throw error
+    }
+}
+
+
 module.exports = {
-    crearPost, obtenerPost, modificarPost, eliminarPost
+    crearPost, obtenerPost, modificarPost, eliminarPost, existePost
 }
